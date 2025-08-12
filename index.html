@@ -1,210 +1,602 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spelete - Fashion E-commerce</title>
+  <meta name="description" content="Spelete offers trendy fashion for kids, men, and women. Shop now for quality and style.">
+  <meta name="author" content="BriVaNew">
 
-  <title>www.Spelete.co.za</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
-
-  <!-- Favicons -->
-  <link href="assets/img/Screenshot 2023-11-30 205422.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="icon" type="image/png" href="favicon.png">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-ezq2B3Q0OXSSV0fVT5kbbvVv8j+j80Q6eDkXV5PW6SfQlWlUGFC7T6z4jblgYKbQ" crossorigin="anonymous">
-    
+  <!-- Bootstrap CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
-  <!-- SPELETE Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    :root{
+      --brand-blue:#0a58ca;
+      --brand-blue-dark:#030736;
+      --brand-accent:#0078D4;
+      --brand-green:#62BF04;
+      --brand-gold:#FFD700;
+    }
 
-  <!-- =======================================================
-  * Template Name: SPELETE
-  * Updated: Sep 18 2023 with SPELETE v5.3.2
-  * Template URL: https://SPELETE/
-  * Author: SPELETE.com
-  * License: https://SPELETE.com/license/
-  ======================================================== -->
+    *{margin:0;padding:0;box-sizing:border-box}
+
+    body{
+      font-family:"Lato",sans-serif;
+      line-height:1.6;
+      background:linear-gradient(135deg,#f5f7fa,#c3cfe2);
+      color:var(--brand-blue);
+      overflow-x:hidden;
+    }
+
+    a{ text-decoration:none; color:var(--brand-blue); transition:all .3s ease; }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--brand-accent), var(--brand-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+    }
+    .gradient-text-small {
+      background: linear-gradient(135deg, var(--brand-accent), var(--brand-green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+    }
+    .gallery-text, .contact-text {
+      color: #fff !important;
+    }
+
+    header{
+      background:linear-gradient(135deg, rgba(255,255,230,.9), rgba(80,191,4,.8));
+      padding:10px 0;
+      position:sticky; top:0; z-index:1000;
+      box-shadow:0 4px 6px rgba(0,0,0,.1);
+    }
+    .navbar{padding:0}
+    .navbar-brand img{
+      max-height:80px;
+      filter:opacity(.9) brightness(.95) contrast(.92);
+      mix-blend-mode:soft-light;
+      transition:transform .3s ease, filter .3s ease;
+    }
+    .navbar-brand img:hover{ transform:scale(1.06); filter:opacity(1) brightness(1) contrast(1); }
+
+    .nav-pill{
+      display:inline-flex; align-items:center; justify-content:center;
+      min-width:120px;
+      padding:10px 20px;
+      border-radius:25px;
+      font-weight:700;
+      color:#fff !important;
+      background:linear-gradient(135deg, var(--brand-accent), var(--brand-blue-dark));
+      box-shadow:0 4px 8px rgba(0,0,0,.2);
+      border:none;
+      transition:all .2s ease;
+      gap:.5rem;
+    }
+    .nav-pill:hover{
+      background:var(--brand-green);
+      transform:translateY(-2px);
+      box-shadow:0 6px 12px rgba(0,0,0,.3);
+      color:#fff !important;
+    }
+    .cart-badge{
+      position:absolute; top:-6px; right:-8px;
+      background:var(--brand-gold); color:#000; border:1px solid #fff;
+      border-radius:999px; padding:2px 6px; font-size:12px; font-weight:800;
+      line-height:1;
+    }
+    .cart-icon{
+      font-size: 24px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand-accent), var(--brand-blue-dark));
+      padding: 12px;
+      border-radius: 50%;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3), inset 0 -2px 4px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.3);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+    .cart-icon:hover{
+      transform: translateY(-3px) rotate(5deg);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.4), inset 0 -2px 4px rgba(0,0,0,0.2), inset 0 2px 4px rgba(255,255,255,0.3);
+      background: var(--brand-green);
+    }
+
+    .search-container{ position:relative; max-width:300px; }
+    .search-control{
+      border:1px solid rgba(0,0,0,.25);
+      background:rgba(255,255,255,.45);
+      backdrop-filter:blur(10px);
+      color:var(--brand-blue);
+      border-radius:25px; padding:8px 15px; font-size:14px;
+    }
+    .search-control:focus{
+      border-color:var(--brand-accent);
+      box-shadow:0 0 0 .2rem rgba(0,120,212,.25); outline:none;
+    }
+    .search-results{
+      position:absolute; top:100%; left:0; right:0; z-index:1000;
+      background:rgba(255,255,255,.95); backdrop-filter:blur(10px);
+      border:1px solid rgba(0,0,0,.15); border-radius:8px; max-height:220px; overflow:auto;
+    }
+    .result-item{ padding:10px; cursor:pointer; color:var(--brand-blue); }
+    .result-item:hover{ background:rgba(98,191,4,.15); color:var(--brand-green); }
+
+    #hero{
+      width:100%; height:90vh;
+      background:url('4.png') center/cover no-repeat;
+      position:relative; display:flex; align-items:center; justify-content:center; text-align:center;
+    }
+    #hero:before{
+      content:""; position:absolute; inset:0; z-index:1;
+      background:linear-gradient(to bottom, rgba(98,191,4,.7), rgba(0,120,212,.5));
+    }
+    #hero .container{ position:relative; z-index:2; padding:0 30px; }
+    #hero h1{ font-size:64px; font-weight:700; color:var(--brand-gold) !important; margin-bottom:20px; font-family:"Playfair Display",serif; }
+    #hero h1 span{ color:#fff; }
+    #hero h2{ font-size:26px; color:#fff !important; font-weight:300; margin-bottom:40px; }
+    #hero .btn-get-started{
+      background:linear-gradient(135deg,var(--brand-accent),var(--brand-blue-dark));
+      color:#fff; padding:14px 40px; border-radius:50px; font-weight:700; border:none;
+    }
+    #hero .btn-get-started:hover{ background:var(--brand-green); transform:translateY(-3px); }
+
+    section{ padding:80px 0; overflow:hidden; }
+    .section-title{ text-align:center; padding-bottom:50px; }
+    .section-title h2{ font-size:14px; font-weight:800; padding:10px 25px; background:rgba(98,191,4,.18); border-radius:50px; display:inline-block; }
+    .section-title h3{ font-size:40px; font-weight:800; margin:20px 0 0; }
+    .section-title p{ font-size:16px; margin:20px auto 0; max-width:700px; }
+
+    .products{ background:linear-gradient(135deg, rgba(255,255,255,.85), rgba(98,191,4,.18)); }
+    .products .product-item{ margin-bottom:30px; transition:transform .3s ease, box-shadow .3s ease; }
+    .products .product-item:hover{ transform:translateY(-8px); box-shadow:0 8px 24px rgba(0,0,0,.15); }
+    .products .product-item img{ width:100%; height:300px; object-fit:cover; border-radius:12px; }
+    .products .product-info{
+      padding:20px; text-align:center; background:rgba(255,255,255,.85); backdrop-filter:blur(10px);
+      border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.08); margin-top:-10px; position:relative; z-index:2;
+    }
+    .products .product-info h4{ font-size:20px; font-weight:800; margin-bottom:8px; }
+    .products .product-info .price{ font-size:18px; font-weight:800; color:var(--brand-green); margin-bottom:10px; }
+    .products .product-info .btn{
+      background:linear-gradient(135deg,var(--brand-accent),var(--brand-blue-dark));
+      color:#fff; padding:10px 20px; border-radius:50px; font-weight:700; border:none;
+    }
+    .products .product-info .btn:hover{ background:var(--brand-green); transform:translateY(-3px); }
+
+    .contact .info-box{
+      background:rgba(255,255,255,.85); backdrop-filter:blur(10px);
+      text-align:center; padding:30px 20px; border-radius:12px; box-shadow:0 4px 12px rgba(0,0,0,.08);
+      margin-bottom:30px; transition:transform .3s ease;
+    }
+    .contact .info-box:hover{ transform:translateY(-5px); }
+    .contact .info-box i{
+      font-size:36px; color:var(--brand-green); border:2px solid var(--brand-gold);
+      border-radius:50%; padding:10px; width:60px; height:60px; display:inline-flex; align-items:center; justify-content:center; margin-bottom:15px;
+    }
+    .contact .php-email-form{
+      background:linear-gradient(135deg, rgba(255,255,255,0.95), rgba(98,191,4,0.2));
+      padding:30px; border-radius:16px; box-shadow:0 8px 24px rgba(0,0,0,0.15);
+      height:100%; transition: all 0.3s ease;
+      border: 2px solid rgba(255,255,255,0.4);
+      min-height: 450px; /* Equal height */
+    }
+    .contact .php-email-form:hover{
+      transform: translateY(-5px);
+      box-shadow:0 12px 32px rgba(0,0,0,0.2);
+    }
+    .contact .php-email-form input,
+    .contact .php-email-form textarea{
+      border-radius:12px; box-shadow:0 2px 4px rgba(0,0,0,0.1); font-size:14px; padding:12px 18px;
+      border:1px solid rgba(0,0,0,0.2); background:rgba(255,255,255,0.9);
+      transition: all 0.3s ease;
+    }
+    .contact .php-email-form input:focus,
+    .contact .php-email-form textarea:focus{
+      border-color:var(--brand-accent); outline:2px solid var(--brand-gold);
+      box-shadow:0 4px 8px rgba(0,120,212,0.2);
+    }
+    .contact .php-email-form button[type=submit]{
+      background:linear-gradient(135deg,var(--brand-accent),var(--brand-blue-dark));
+      color:#fff; padding:12px 35px; border-radius:50px; font-weight:700; border:none;
+      box-shadow:0 4px 8px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+    .contact .php-email-form button[type=submit]:hover{
+      background:var(--brand-green); transform:translateY(-3px);
+      box-shadow:0 6px 12px rgba(0,0,0,0.3);
+    }
+    .contact .map{
+      height:100%; border-radius:16px; overflow:hidden;
+      background:linear-gradient(135deg, rgba(255,255,255,0.95), rgba(98,191,4,0.2));
+      box-shadow:0 8px 24px rgba(0,0,0,0.15);
+      border: 2px solid rgba(255,255,255,0.4);
+      transition: all 0.3s ease;
+      min-height: 450px; /* Equal height */
+    }
+    .contact .map:hover{
+      transform: translateY(-5px);
+      box-shadow:0 12px 32px rgba(0,0,0,0.2);
+    }
+    .contact .map iframe{
+      width:100%; height:100%; border:none; border-radius:16px;
+    }
+
+    footer{
+      background:rgba(255,255,255,.78);
+      backdrop-filter:blur(20px);
+      color:var(--brand-blue);
+      text-align:center; padding:40px 0; font-size:14px;
+      border-top:1px solid rgba(0,0,0,.06);
+    }
+    footer a{ color:var(--brand-blue); margin:0 10px; font-size:24px; }
+    footer a:hover{ color:var(--brand-green); }
+    footer .social-links{ margin:20px 0; }
+
+    .modal-content{
+      background:rgba(255,255,255,.85); backdrop-filter:blur(10px);
+      border:2px solid rgba(255,255,255,.4); border-radius:12px;
+      color:var(--brand-blue);
+    }
+    .modal-header{
+      background:linear-gradient(135deg,var(--brand-accent),var(--brand-blue-dark));
+      border-bottom:none;
+    }
+    .modal-title{ color:var(--brand-gold) !important; }
+    .modal-body .form-control{
+      border-radius:8px; padding:10px 15px; font-size:14px; margin-bottom:20px; color:var(--brand-blue);
+      border:1px solid rgba(0,0,0,.3); background:rgba(255,255,255,.45); backdrop-filter:blur(8px);
+    }
+    .modal-body .btn{
+      background:linear-gradient(135deg,var(--brand-accent),var(--brand-blue-dark));
+      color:#fff; padding:10px; border-radius:50px; font-weight:700; border:none; width:100%;
+    }
+    .modal-body .btn:hover{ background:var(--brand-green); transform:translateY(-3px); }
+
+    .custom-notification{
+      background:linear-gradient(135deg,var(--brand-accent),var(--brand-blue-dark));
+      color:#fff; border-radius:8px; padding:15px 20px; min-width:250px;
+      box-shadow:0 4px 12px rgba(0,0,0,.15);
+    }
+
+    .back-to-top{
+      position:fixed; right:15px; bottom:15px; z-index:996;
+      background:linear-gradient(135deg,var(--brand-accent),var(--brand-blue-dark));
+      width:40px; height:40px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+      transition:all .4s; text-decoration:none; visibility:hidden; opacity:0;
+    }
+    .back-to-top i{ font-size:24px; color:#fff; }
+    .back-to-top:hover{ background:var(--brand-green); transform:translateY(-3px); }
+    .back-to-top.active{ visibility:visible; opacity:1; }
+
+    #preloader{ position:fixed; inset:0; z-index:9999; background:#fff; }
+    #preloader:before{
+      content:""; position:fixed; top:calc(50% - 30px); left:calc(50% - 30px);
+      border:6px solid var(--brand-green); border-top-color:var(--brand-gold);
+      border-radius:50%; width:60px; height:60px; animation:spin 1s linear infinite;
+    }
+    @keyframes spin{ to{ transform:rotate(360deg); } }
+
+    @media (max-width:992px){
+      .nav-pill{ min-width:110px; margin:6px 0; }
+      .search-container{ margin:10px 0; }
+      .contact .php-email-form, .contact .map{ min-height: 400px; }
+    }
+    @media (max-width:768px){
+      #hero{ height:100vh; }
+      #hero h1{ font-size:40px; line-height:48px; }
+      #hero h2{ font-size:20px; line-height:28px; }
+      .navbar-brand img{ max-height:60px; }
+    }
+  </style>
 </head>
-
 <body>
+  <div id="preloader"></div>
 
-  <!-- ======= Top Bar ======= -->
-  <section id="topbar" class="d-flex align-items-center">
-    <div class="container d-flex justify-content-center justify-content-md-between">
-      <div class="contact-info d-flex align-items-center">
-        <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:contact@example.com">spelete@gmail.com</a></i>
-        <i class="bi bi-phone d-flex align-items-center ms-4"><span>072 436 6502</span></i>
+  <header id="header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#hero">
+          <img src="favicon.png" alt="Spelete Logo">
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+          <i class="bi bi-list" style="font-size:1.75rem;color:#000"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="mainNav">
+          <ul class="navbar-nav gap-2 me-auto">
+            <li class="nav-item"><a class="nav-link nav-pill" href="#hero">Home</a></li>
+            <li class="nav-item"><a class="nav-link nav-pill gallery-text" href="#products">Gallery</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link nav-pill dropdown-toggle" href="#" data-bs-toggle="dropdown">Shop</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="kids.html">Kids</a></li>
+                <li><a class="dropdown-item" href="male.html">Male</a></li>
+                <li><a class="dropdown-item" href="female.html">Female</a></li>
+              </ul>
+            </li>
+            <li class="nav-item"><a class="nav-link nav-pill contact-text" href="#contact">Contact</a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-3 ms-auto">
+            <div class="search-container d-none d-lg-block">
+              <input type="text" id="searchbar" class="search-control" placeholder="Search gallery...">
+              <div id="search-results" class="search-results" style="display:none;"></div>
+            </div>
+            <a class="position-relative" href="#" onclick="viewCart()">
+              <i class="bi bi-cart cart-icon"></i>
+              <span id="cart-count" class="cart-badge">0</span>
+            </a>
+            <a class="nav-pill" href="#" onclick="showLoginModal()">
+              <i class="bi bi-person"></i><span>Login</span>
+            </a>
+          </div>
+        </div>
       </div>
-      <div>
-        <input id="searchbar" onkeyup="search()" type="text"
-        name="search" placeholder="Search here...."> 
+    </nav>
+  </header>
+
+  <section id="hero">
+    <div class="container">
+      <h1>Welcome to <span>Spelete</span></h1>
+      <h2>Trendy fashion for kids, men, and women at Spelete</h2>
+      <a href="video\WhatsApp Video 2023-11-30 at 20.47.26_74a788fe.mp4" class="btn-get-started">Watch Us</a>
+    </div>
+  </section>
+
+  <section id="products" class="products">
+    <div class="container">
+      <div class="section-title">
+        <h2 class="gallery-text">Gallery</h2>
+        <h3 class="gradient-text">Our <span>Collection</span></h3>
+        <p class="gradient-text-small">Explore our curated selection of fashion items.</p>
       </div>
-      <div class="social-links d-none d-md-flex align-items-center">
-        <a href="https://web.facebook.com/p/Spelete-100053187431292/?_rdc=1&_rdr" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="https://www.instagram.com/spelete_official/?hl=en" class="instagram"><i class="bi bi-instagram"></i></a>
+
+      <div class="row portfolio-container" id="products-container">
+        <!-- Female Items (First 3) -->
+        <div class="col-lg-4 col-md-6 filter-female">
+          <div class="product-item">
+            <span class="badge bg-success position-absolute top-0 start-0 m-2">Sale</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f1f6fe'/><circle cx='200' cy='120' r='40' fill='%2306702d'/><rect x='160' y='160' width='80' height='120' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Elegant Evening Dress</text></svg>" alt="Elegant Evening Dress">
+            <div class="product-info">
+              <h4>Elegant Evening Dress</h4>
+              <p class="price"><del>R399.99</del> R299.99</p>
+              <button class="btn" onclick="addToCart('female1','Elegant Evening Dress',299.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 filter-female">
+          <div class="product-item">
+            <span class="badge bg-primary position-absolute top-0 start-0 m-2">New</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23e7f1fd'/><circle cx='200' cy='120' r='40' fill='%2306702d'/><rect x='170' y='160' width='60' height='100' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Chic Silk Blouse</text></svg>" alt="Chic Silk Blouse">
+            <div class="product-info">
+              <h4>Chic Silk Blouse</h4>
+              <p class="price">R189.99</p>
+              <button class="btn" onclick="addToCart('female2','Chic Silk Blouse',189.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 filter-female">
+          <div class="product-item">
+            <span class="badge bg-info position-absolute top-0 start-0 m-2">Free Shipping</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f1f6fe'/><circle cx='200' cy='120' r='40' fill='%2306702d'/><rect x='160' y='160' width='80' height='120' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Floral Summer Dress</text></svg>" alt="Floral Summer Dress">
+            <div class="product-info">
+              <h4>Floral Summer Dress</h4>
+              <p class="price">R249.99</p>
+              <button class="btn" onclick="addToCart('female3','Floral Summer Dress',249.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <!-- Male Item -->
+        <div class="col-lg-4 col-md-6 filter-male">
+          <div class="product-item">
+            <span class="badge bg-success position-absolute top-0 start-0 m-2">Sale</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f1f6fe'/><circle cx='200' cy='120' r='40' fill='%2306702d'/><rect x='160' y='160' width='80' height='80' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Classic Cotton Shirt</text></svg>" alt="Classic Cotton Shirt">
+            <div class="product-info">
+              <h4>Classic Cotton Shirt</h4>
+              <p class="price"><del>R199.99</del> R159.99</p>
+              <button class="btn" onclick="addToCart('male1','Classic Cotton Shirt',159.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <!-- Kids Item -->
+        <div class="col-lg-4 col-md-6 filter-kids">
+          <div class="product-item">
+            <span class="badge bg-success position-absolute top-0 start-0 m-2">Super Sale</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f1f6fe'/><circle cx='200' cy='130' r='30' fill='%2306702d'/><rect x='170' y='160' width='60' height='70' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Rainbow Adventure Tee</text></svg>" alt="Rainbow Adventure Tee">
+            <div class="product-info">
+              <h4>Rainbow Adventure Tee</h4>
+              <p class="price"><del>R99.99</del> R79.99</p>
+              <button class="btn" onclick="addToCart('kids1','Rainbow Adventure Tee',79.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <!-- Hidden Items (Initially Hidden) -->
+        <div class="col-lg-4 col-md-6 filter-female hidden-product" style="display: none;">
+          <div class="product-item">
+            <span class="badge bg-success position-absolute top-0 start-0 m-2">Sale</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23e7f1fd'/><circle cx='200' cy='120' r='40' fill='%2306702d'/><rect x='170' y='160' width='60' height='100' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Designer Handbag</text></svg>" alt="Designer Handbag">
+            <div class="product-info">
+              <h4>Designer Handbag</h4>
+              <p class="price"><del>R199.99</del> R149.99</p>
+              <button class="btn" onclick="addToCart('female4','Designer Handbag',149.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 filter-female hidden-product" style="display: none;">
+          <div class="product-item">
+            <span class="badge bg-primary position-absolute top-0 start-0 m-2">New</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f1f6fe'/><circle cx='200' cy='120' r='40' fill='%2306702d'/><rect x='160' y='160' width='80' height='120' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Cozy Knit Sweater</text></svg>" alt="Cozy Knit Sweater">
+            <div class="product-info">
+              <h4>Cozy Knit Sweater</h4>
+              <p class="price">R219.99</p>
+              <button class="btn" onclick="addToCart('female5','Cozy Knit Sweater',219.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 filter-female hidden-product" style="display: none;">
+          <div class="product-item">
+            <span class="badge bg-warning position-absolute top-0 start-0 m-2">Buy 2 Get 1 Free</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23e7f1fd'/><circle cx='200' cy='120' r='40' fill='%2306702d'/><rect x='170' y='160' width='60' height='100' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Statement Jewelry Set</text></svg>" alt="Statement Jewelry Set">
+            <div class="product-info">
+              <h4>Statement Jewelry Set</h4>
+              <p class="price">R89.99</p>
+              <button class="btn" onclick="addToCart('female6','Statement Jewelry Set',89.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 filter-male hidden-product" style="display: none;">
+          <div class="product-item">
+            <span class="badge bg-info position-absolute top-0 start-0 m-2">Free Shipping</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23e7f1fd'/><circle cx='200' cy='120' r='40' fill='%2306702d'/><rect x='150' y='160' width='100' height='100' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Casual Denim Jacket</text></svg>" alt="Casual Denim Jacket">
+            <div class="product-info">
+              <h4>Casual Denim Jacket</h4>
+              <p class="price">R399.99</p>
+              <button class="btn" onclick="addToCart('male2','Casual Denim Jacket',399.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 filter-male hidden-product" style="display: none;">
+          <div class="product-item">
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f1f6fe'/><circle cx='200' cy='120' r='40' fill='%2306702d'/><rect x='160' y='160' width='80' height='120' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Slim Fit Trousers</text></svg>" alt="Slim Fit Trousers">
+            <div class="product-info">
+              <h4>Slim Fit Trousers</h4>
+              <p class="price">R249.99</p>
+              <button class="btn" onclick="addToCart('male3','Slim Fit Trousers',249.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 filter-male hidden-product" style="display: none;">
+          <div class="product-item">
+            <span class="badge bg-success position-absolute top-0 start-0 m-2">Sale</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23e7f1fd'/><circle cx='200' cy='120' r='40' fill='%2306702d'/><rect x='160' y='160' width='80' height='80' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Comfy Men&apos;s Hoodie</text></svg>" alt="Comfy Men's Hoodie">
+            <div class="product-info">
+              <h4>Comfy Men's Hoodie</h4>
+              <p class="price"><del>R349.99</del> R279.99</p>
+              <button class="btn" onclick="addToCart('male4','Comfy Men&apos;s Hoodie',279.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 filter-male hidden-product" style="display: none;">
+          <div class="product-item">
+            <span class="badge bg-warning position-absolute top-0 start-0 m-2">Buy 1 Get 1 Half Price</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f1f6fe'/><circle cx='200' cy='120' r='40' fill='%2306702d'/><rect x='160' y='160' width='80' height='80' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Smart Polo Shirt</text></svg>" alt="Smart Polo Shirt">
+            <div class="product-info">
+              <h4>Smart Polo Shirt</h4>
+              <p class="price">R189.99</p>
+              <button class="btn" onclick="addToCart('male5','Smart Polo Shirt',189.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 filter-kids hidden-product" style="display: none;">
+          <div class="product-item">
+            <span class="badge bg-primary position-absolute top-0 start-0 m-2">Fun Time</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23e7f1fd'/><circle cx='200' cy='130' r='30' fill='%2306702d'/><rect x='160' y='160' width='80' height='80' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Princess Sparkle Dress</text></svg>" alt="Princess Sparkle Dress">
+            <div class="product-info">
+              <h4>Princess Sparkle Dress</h4>
+              <p class="price">R149.99</p>
+              <button class="btn" onclick="addToCart('kids2','Princess Sparkle Dress',149.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 filter-kids hidden-product" style="display: none;">
+          <div class="product-item">
+            <span class="badge bg-danger position-absolute top-0 start-0 m-2">Cozy Warm</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f1f6fe'/><circle cx='200' cy='130' r='30' fill='%2306702d'/><rect x='170' y='160' width='60' height='70' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Superhero Power Hoodie</text></svg>" alt="Superhero Power Hoodie">
+            <div class="product-info">
+              <h4>Superhero Power Hoodie</h4>
+              <p class="price">R199.99</p>
+              <button class="btn" onclick="addToCart('kids3','Superhero Power Hoodie',199.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 filter-kids hidden-product" style="display: none;">
+          <div class="product-item">
+            <span class="badge bg-success position-absolute top-0 start-0 m-2">Amazing Deal</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23e7f1fd'/><circle cx='200' cy='130' r='30' fill='%2306702d'/><rect x='160' y='160' width='80' height='80' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Adventure Explorer Jeans</text></svg>" alt="Adventure Explorer Jeans">
+            <div class="product-info">
+              <h4>Adventure Explorer Jeans</h4>
+              <p class="price"><del>R159.99</del> R129.99</p>
+              <button class="btn" onclick="addToCart('kids4','Adventure Explorer Jeans',129.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 filter-kids hidden-product" style="display: none;">
+          <div class="product-item">
+            <span class="badge bg-primary position-absolute top-0 start-0 m-2">So Cute</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23f1f6fe'/><circle cx='200' cy='130' r='30' fill='%2306702d'/><rect x='170' y='160' width='60' height='70' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Little Star Baby Set</text></svg>" alt="Little Star Baby Set">
+            <div class="product-info">
+              <h4>Little Star Baby Set</h4>
+              <p class="price">R89.99</p>
+              <button class="btn" onclick="addToCart('kids5','Little Star Baby Set',89.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 filter-kids hidden-product" style="display: none;">
+          <div class="product-item">
+            <span class="badge bg-info position-absolute top-0 start-0 m-2">Free Shipping</span>
+            <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect width='400' height='300' fill='%23e7f1fd'/><circle cx='200' cy='130' r='30' fill='%2306702d'/><rect x='160' y='160' width='80' height='80' fill='%2314cc5a'/><text x='200' y='290' font-family='Arial' font-size='14' text-anchor='middle' fill='%23555'>Magic Rainbow Jacket</text></svg>" alt="Magic Rainbow Jacket">
+            <div class="product-info">
+              <h4>Magic Rainbow Jacket</h4>
+              <p class="price">R249.99</p>
+              <button class="btn" onclick="addToCart('kids6','Magic Rainbow Jacket',249.99)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        <!-- View All Link -->
+        <div class="col-12 text-center mt-4">
+          <a href="#" class="btn btn-get-started" onclick="toggleViewAll()">...View All</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="d-flex align-items-center">
-    <div class="container d-flex align-items-center justify-content-between">
-
-      <!--<h1 class="logo"><a href="index.html">BizLand<span>.</span></a></h1>-->
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <a href="index.html" class="logo"><img src="assets/img/Screenshot 2023-11-30 205422.png" alt=""></a>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          
-          <li class="dropdown"><a href="#"><span></span>Shop<i class="bi bi-chevron-down"></i></a>
-            <ul>
-              
-              <li><a href="#">Kids</a></li>
-              <li><a href="#">Male</a></li>
-              <li><a href="#">Female</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#about">Gallery</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
-          <li class="dropdown"><a href="#"><span></span>Contact<i class="bi bi-chevron-down"></i></a>
-            <ul>
-              
-              <li><a href="#">072 436 6502</a></li>
-              <li><a href="#">spelete@gmail.com</a></li>
-              
-            </ul>
-          </li>
-          <li><a href="index.html" ><i class ="btn-get-started" id="btn-get-started">Log in</i></a></li>
-		  <!--<li><a href="login.php"  style="width:auto;">Login</a></li>-->
-          <li><a href="index.html" ><i class ="bi bi-cart" id="cart"> </i></a></li>
-
-        </ul>
-         
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
-      
-    </div>
-  </header><!-- End Header -->
-
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex align-items-center">
-    <div class="container" data-aos="zoom-out" data-aos-delay="100">
-      <h1>Welcome to <span id="spelete">SPELETE</span></h1>
-      <h2>Making fashionable clothes suited for your taste and style.</h2>
-      <div class="d-flex">
-        <a href="#about" class="btn-get-started scrollto">Watch Us</a>
-        <a href="video/WhatsApp Video 2023-11-30 at 20.47.26_74a788fe.mp4" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a>
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-title">
+        <h2 class="contact-text">Contact</h2>
+        <h3 class="gradient-text"><span>Contact</span> Us</h3>
+        <p class="gradient-text-small">Reach out to us for any inquiries or support.</p>
       </div>
-    </div>
-  </section><!-- End Hero -->
-
-  <main id="main">
-
-    <!-- ======= Featured Services Section ======= -->
-    <section id="featured-services" class="featured-services">
-      <div class="container" data-aos="fade-up">
-
-        <div class="row">
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
-             <!-- <div class="icon"><i class="bx bxl-dribbble"></i></div> -->
-              <h4 class="title" ><img src="assets/img/sneakers/WhatsApp Image 2023-11-30 at 20.43.26_90de43c3.jpg" id="sneakers" alt=""></h4>
-              <p class="description"></p>
-            </div>
+      <div class="row">
+        <div class="col-lg-4 col-md-6">
+          <div class="info-box">
+            <i class="bi bi-geo-alt"></i>
+            <h3 class="gradient-text">Our Address</h3>
+            <p class="gradient-text-small">Eland House, 387 Helen Joseph St<br>
+              Pretoria, 0001<br><br></p>
           </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
-              <!--<div class="icon"><i class="bx bx-file"></i></div>-->
-              <h4 class="title" ><img src="assets/img/sneakers/WhatsApp Image 2023-11-30 at 20.43.26_90de43c3.jpg" id="sneakers" alt=""></h4>
-              <p class="description"></p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
-              <!--<div class="icon"><i class="bx bx-tachometer"></i></div>-->
-              <h4 class="title" ><img src="assets/img/sneakers/WhatsApp Image 2023-11-30 at 20.43.26_90de43c3.jpg" id="sneakers" alt=""></h4>
-              <p class="description"></p>
-            </div>
-          </div>
-
-          <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
-            <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
-             <!-- <div class="icon"><i class="bx bx-world"></i></div>-->
-              <h4 class="title" ><img src="assets/img/sneakers/WhatsApp Image 2023-11-30 at 20.43.26_90de43c3.jpg" id="sneakers" alt=""></h4>
-              <p class="description"></p>
-            </div>
-          </div>
-
         </div>
-
+        <div class="col-lg-4 col-md-6">
+          <div class="info-box">
+            <i class="bi bi-envelope"></i>
+            <h3 class="gradient-text">Email Us</h3>
+            <p class="gradient-text-small">info@spelete.com</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="info-box">
+            <i class="bi bi-phone"></i>
+            <h3 class="gradient-text">Call Us</h3>
+            <p class="gradient-text-small">+27 123 456 789</p>
+          </div>
+        </div>
       </div>
-    </section><!-- End Featured Services Section -->
-
-    
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>Contact</h2>
-          <h3><span>Contact Us</span></h3>
-          <p>Ut possimus qui ut temporibus culpa velit eveniet modi omnis est adipisci expedita at voluptas atque vitae autem.</p>
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-          <div class="col-lg-6">
-            <div class="info-box mb-4">
-              <i class="bx bx-map"></i>
-              <h3>Our Address</h3>
-              <p>Eland House, 387 Helen Joseph St, Pretoria Central, Pretoria, 0001</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-envelope"></i>
-              <h3>Email Us</h3>
-              <p>spelete@gmail.com</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6">
-            <div class="info-box  mb-4">
-              <i class="bx bx-phone-call"></i>
-              <h3>Call Us</h3>
-              <p>072 436 6502</p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="row" data-aos="fade-up" data-aos-delay="100">
-	
-          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20364.319999331972!2d28.09663904195314!3d-25.54046899446994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1ebfcf9ce15eafdd%3A0xb9f4c9a794d0f130!2sSoshanguve%20-%20L%2C%20Soshanguve%2C%200152!5e0!3m2!1sen!2sza!4v1701387198448!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+      <div class="row g-4">
+        <div class="col-lg-6">
+          <div class="php-email-form">
+            <form onsubmit="submitContactForm(event)">
               <div class="row">
-                <div class="col form-group">
+                <div class="col-md-6 form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
                 </div>
-                <div class="col form-group">
+                <div class="col-md-6 form-group">
                   <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
                 </div>
               </div>
@@ -214,144 +606,301 @@
               <div class="form-group">
                 <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
               </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
+              <div class="text-center">
+                <button type="submit">Send Message</button>
               </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
             </form>
           </div>
-
         </div>
-
+        <div class="col-lg-6">
+          <div class="map">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1836528.4035582745!2d27.438189905707837!3d-25.969039372756992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sspelete!5e0!3m2!1sen!2sza!4v1724359829289!5m2!1sen!2sza" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+        </div>
       </div>
-    </section><!-- End Contact Section -->
+    </div>
+  </section>
 
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
   <footer id="footer">
-
-    <div class="footer-newsletter">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-lg-6">
-            <h4>Join Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
-            <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
-            </form>
-          </div>
-        </div>
+    <div class="container">
+      <div class="copyright gradient-text-small">
+        © Copyright <strong><span>Spelete</span></strong>. All Rights Reserved
+      </div>
+      <div class="social-links">
+        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      </div>
+      <div class="credits gradient-text-small">
+        Designed by <a href="https://malulekens.github.io/Newkind-Maluleke/">brivanew.co.za</a>
       </div>
     </div>
+  </footer>
 
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>SPELETE<span>.</span></h3>
-            <p>
-              Eland House, 387 Helen Joseph St<br> 
-			  Pretoria Central<br>
-			  Pretoria, 0001<br><br>
-              <strong>Phone:</strong> 072 436 6502<br>
-              <strong>Email:</strong> spelete@gmail.com<br>
-            </p>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Social Networks</h4>
-            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-            <div class="social-links mt-3">
-              <a href="https://www.facebook.com/p/Spelete-100053187431292/?_rdc=2&_rdr" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="https://www.instagram.com/speletesa/" class="instagram"><i class="bx bxl-instagram"></i></a>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    <div class="container py-4">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Spelete</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/bizland-bootstrap-business-template/ -->
-        Designed by <a href="#">Sevenzile Maluleka</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
-
-  <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <ul class="nav nav-tabs">
+            <li class="nav-item"><a class="nav-link active" href="#" onclick="showLogin()" id="login-tab">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="#" onclick="showRegister()" id="register-tab">Register</a></li>
+          </ul>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div id="login-form">
+            <form onsubmit="handleLogin(event)">
+              <input type="email" class="form-control" placeholder="Email" required>
+              <input type="password" class="form-control" placeholder="Password" required>
+              <button type="submit" class="btn">Login</button>
+            </form>
+          </div>
+          <div id="register-form" style="display:none;">
+            <form onsubmit="handleRegister(event)">
+              <input type="text" class="form-control" placeholder="Full Name" required>
+              <input type="email" class="form-control" placeholder="Email" required>
+              <input type="password" class="form-control" placeholder="Password" required>
+              <input type="password" class="form-control" placeholder="Confirm Password" required>
+              <button type="submit" class="btn">Register</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-</body>
-<script>
-// JavaScript code 
-function search() {
-    // Get the user input from the search bar
-    let input = document.getElementById('searchbar').value.toLowerCase();
+  <script>
+    let cart = JSON.parse(localStorage.getItem('speleteCart')) || [];
+    let isLoading = true;
+    let products = [
+      { id:'female1',name:'Elegant Evening Dress',price:299.99,category:'female',image:'female1.jpg' },
+      { id:'female2',name:'Chic Silk Blouse',price:189.99,category:'female',image:'female2.jpg' },
+      { id:'female3',name:'Floral Summer Dress',price:249.99,category:'female',image:'female3.jpg' },
+      { id:'female4',name:'Designer Handbag',price:149.99,category:'female',image:'female4.jpg' },
+      { id:'female5',name:'Cozy Knit Sweater',price:219.99,category:'female',image:'female5.jpg' },
+      { id:'female6',name:'Statement Jewelry Set',price:89.99,category:'female',image:'female6.jpg' },
+      { id:'male1',name:'Classic Cotton Shirt',price:159.99,category:'male',image:'male1.jpg' },
+      { id:'male2',name:'Casual Denim Jacket',price:399.99,category:'male',image:'male2.jpg' },
+      { id:'male3',name:'Slim Fit Trousers',price:249.99,category:'male',image:'male3.jpg' },
+      { id:'male4',name:'Comfy Men\'s Hoodie',price:279.99,category:'male',image:'male4.jpg' },
+      { id:'male5',name:'Smart Polo Shirt',price:189.99,category:'male',image:'male5.jpg' },
+      { id:'kids1',name:'Rainbow Adventure Tee',price:79.99,category:'kids',image:'kids1.jpg' },
+      { id:'kids2',name:'Princess Sparkle Dress',price:149.99,category:'kids',image:'kids2.jpg' },
+      { id:'kids3',name:'Superhero Power Hoodie',price:199.99,category:'kids',image:'kids3.jpg' },
+      { id:'kids4',name:'Adventure Explorer Jeans',price:129.99,category:'kids',image:'kids4.jpg' },
+      { id:'kids5',name:'Little Star Baby Set',price:89.99,category:'kids',image:'kids5.jpg' },
+      { id:'kids6',name:'Magic Rainbow Jacket',price:249.99,category:'kids',image:'kids6.jpg' },
+    ];
 
-    // Get all elements in the document
-    let allElements = document.getElementsByTagName('*');
+    document.addEventListener('DOMContentLoaded', function(){
+      hidePreloader();
+      initializeEventListeners();
+      updateCartCount();
+    });
 
-    // Iterate through each element in the document
-    for (let i = 0; i < allElements.length; i++) {
-        let currentElement = allElements[i];
-
-        // Check if the innerHTML of the current element contains the input
-        if (currentElement.innerHTML.toLowerCase().includes(input)) {
-            // If it does, show the element
-           // currentElement.style.display = "none";
-        } else {
-            // If not, hide the element
-            //currentElement.style.display = "none";
+    function hidePreloader(){
+      setTimeout(()=>{
+        const preloader=document.getElementById('preloader');
+        if(preloader){
+          preloader.style.opacity='0';
+          setTimeout(()=>{ preloader.style.display='none'; isLoading=false; },300);
         }
+      },1000);
     }
-}
 
-</script>
+    function initializeEventListeners(){
+      const searchbar=document.getElementById('searchbar');
+      if(searchbar){ searchbar.addEventListener('input', handleSearch); }
 
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click',function(e){
+          const target=document.querySelector(this.getAttribute('href'));
+          if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth'}); }
+        });
+      });
+
+      const backToTop=document.querySelector('.back-to-top');
+      window.addEventListener('scroll', ()=>{
+        if(window.scrollY>100){ backToTop.classList.add('active'); }
+        else{ backToTop.classList.remove('active'); }
+      });
+
+      document.querySelectorAll('.dropdown-item[data-category]').forEach(item=>{
+        item.addEventListener('click', function(e){
+          e.preventDefault();
+          filterProducts(this.getAttribute('data-category'));
+        });
+      });
+    }
+
+    function toggleViewAll(){
+      const hiddenProducts = document.querySelectorAll('.hidden-product');
+      const viewAllLink = document.querySelector('.btn-get-started[onclick="toggleViewAll()"]');
+      const isHidden = hiddenProducts[0].style.display === 'none';
+      hiddenProducts.forEach(product => {
+        product.style.display = isHidden ? '' : 'none';
+      });
+      viewAllLink.textContent = isHidden ? 'View Less' : '...View All';
+    }
+
+    function handleSearch(){
+      const q=document.getElementById('searchbar').value.toLowerCase();
+      const box=document.getElementById('search-results');
+      if(q.length<2){ box.style.display='none'; return; }
+      const matches=products.filter(p=> p.name.toLowerCase().includes(q)||p.category.toLowerCase().includes(q));
+      box.innerHTML = matches.length
+        ? matches.map(p=>`<div class="result-item" onclick="scrollToProduct('${p.id}')"><strong>${p.name}</strong> - R${p.price}</div>`).join('')
+        : '<div class="result-item text-muted">No products found</div>';
+      box.style.display='block';
+    }
+
+    function scrollToProduct(productId){
+      document.getElementById('search-results').style.display='none';
+      document.getElementById('searchbar').value='';
+      document.getElementById('products').scrollIntoView({behavior:'smooth'});
+      setTimeout(()=>{
+        const card=document.querySelector(`[onclick*="${productId}"]`)?.closest('.product-item');
+        if(card){
+          card.style.border='3px solid var(--brand-gold)';
+          setTimeout(()=> card.style.border='none', 2000);
+        }
+      },500);
+    }
+
+    function filterProducts(category){
+      document.querySelectorAll('#products-container > [class*="filter-"]').forEach(col=>{
+        const show = col.classList.contains(`filter-${category}`);
+        col.style.display = show ? '' : 'none';
+      });
+      document.querySelector('.btn-get-started[onclick="toggleViewAll()"]').style.display = category === 'all' ? '' : 'none';
+    }
+
+    function addToCart(id,name,price){
+      const existing=cart.find(i=>i.id===id);
+      if(existing){ existing.quantity+=1; }
+      else{ cart.push({id,name,price,quantity:1}); }
+      saveCart(); updateCartCount(); showNotification(`${name} added to cart!`);
+    }
+
+    function saveCart(){ localStorage.setItem('speleteCart', JSON.stringify(cart)); }
+    function updateCartCount(){
+      const cartCount=document.getElementById('cart-count');
+      cartCount.textContent = cart.reduce((s,i)=>s+i.quantity,0);
+    }
+
+    function viewCart(){
+      if(cart.length===0){ showNotification('Your cart is empty!'); return; }
+      const modal=createCartModal(); document.body.appendChild(modal);
+      const bsModal=new bootstrap.Modal(modal); bsModal.show();
+      modal.addEventListener('hidden.bs.modal', ()=> modal.remove());
+    }
+
+    function createCartModal(){
+      const total=cart.reduce((s,i)=>s+(i.price*i.quantity),0);
+      const modal=document.createElement('div');
+      modal.className='modal fade';
+      modal.innerHTML=`
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title text-white">Shopping Cart</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              ${cart.map(item=>`
+                <div class="d-flex justify-content-between align-items-center border-bottom py-2">
+                  <div>
+                    <h6 class="mb-1">${item.name}</h6>
+                    <small class="text-muted">R${item.price} each</small>
+                  </div>
+                  <div class="d-flex align-items-center gap-2">
+                    <button class="btn btn-sm" style="background:#62BF04;color:#fff" onclick="updateQuantity('${item.id}', ${item.quantity-1})">-</button>
+                    <span>${item.quantity}</span>
+                    <button class="btn btn-sm" style="background:#62BF04;color:#fff" onclick="updateQuantity('${item.id}', ${item.quantity+1})">+</button>
+                    <button class="btn btn-sm btn-outline-danger" onclick="removeFromCart('${item.id}')">Remove</button>
+                  </div>
+                  <div style="min-width: 80px; text-align:right;">
+                    <strong>R${(item.price*item.quantity).toFixed(2)}</strong>
+                  </div>
+                </div>`).join('')}
+              <div class="d-flex justify-content-between align-items-center pt-3">
+                <h5>Total: R${total.toFixed(2)}</h5>
+                <button class="btn" style="background:linear-gradient(135deg,var(--brand-accent),var(--brand-blue-dark));color:#fff;border:none" onclick="checkout()">Proceed to Checkout</button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      return modal;
+    }
+
+    function updateQuantity(id,newQty){
+      if(newQty<=0){ removeFromCart(id); return; }
+      const item=cart.find(i=>i.id===id);
+      if(item){ item.quantity=newQty; saveCart(); updateCartCount();
+        const m=bootstrap.Modal.getInstance(document.querySelector('.modal.show'));
+        if(m){ m.hide(); setTimeout(()=>viewCart(),300); }
+      }
+    }
+
+    function removeFromCart(id){
+      cart = cart.filter(i=>i.id!==id); saveCart(); updateCartCount();
+      const m=bootstrap.Modal.getInstance(document.querySelector('.modal.show'));
+      if(m){ m.hide(); setTimeout(()=>viewCart(),300); }
+      showNotification('Item removed from cart');
+    }
+
+    function checkout(){
+      showNotification('Checkout feature coming soon! Thank you for shopping with Spelete.');
+      const m=bootstrap.Modal.getInstance(document.querySelector('.modal.show')); if(m) m.hide();
+    }
+
+    function showNotification(message,type='success'){
+      document.querySelectorAll('.custom-notification').forEach(n=>n.remove());
+      const n=document.createElement('div');
+      n.className='custom-notification position-fixed';
+      n.style.cssText='top:20px;right:20px;z-index:9999;opacity:0;transform:translateX(100%);transition:all .3s';
+      n.innerHTML=`<div class="d-flex align-items-center">
+        <i class="bi bi-${type==='error'?'exclamation-circle':'check-circle'} me-2"></i>
+        <span>${message}</span>
+        <button class="btn-close btn-close-white ms-2" style="font-size:.8rem" onclick="this.closest('.custom-notification').remove()"></button>
+      </div>`;
+      document.body.appendChild(n);
+      requestAnimationFrame(()=>{ n.style.opacity='1'; n.style.transform='translateX(0)'; });
+      setTimeout(()=>{ n.style.opacity='0'; n.style.transform='translateX(100%)'; setTimeout(()=>n.remove(),300); }, 3500);
+    }
+
+    function showLoginModal(){ new bootstrap.Modal(document.getElementById('loginModal')).show(); }
+    function showLogin(){
+      document.getElementById('login-form').style.display='block';
+      document.getElementById('register-form').style.display='none';
+      document.getElementById('login-tab').classList.add('active');
+      document.getElementById('register-tab').classList.remove('active');
+    }
+    function showRegister(){
+      document.getElementById('login-form').style.display='none';
+      document.getElementById('register-form').style.display='block';
+      document.getElementById('login-tab').classList.remove('active');
+      document.getElementById('register-tab').classList.add('active');
+    }
+    function handleLogin(e){ e.preventDefault(); showNotification('Login successful!'); bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide(); }
+    function handleRegister(e){
+      e.preventDefault();
+      const pw=e.target.querySelectorAll('input[type="password"]');
+      if(pw[0].value!==pw[1].value){ showNotification('Passwords do not match!','error'); return; }
+      showNotification('Registration successful!'); bootstrap.Modal.getInstance(document.getElementById('loginModal')).hide();
+    }
+
+    function submitContactForm(e){
+      e.preventDefault();
+      const form=e.target; const btn=form.querySelector('button[type="submit"]');
+      btn.disabled=true; const old=btn.textContent; btn.textContent='Sending...';
+      setTimeout(()=>{ btn.disabled=false; btn.textContent=old; showNotification("Message sent successfully! We'll get back to you soon."); form.reset(); }, 1500);
+    }
+  </script>
+</body>
 </html>
